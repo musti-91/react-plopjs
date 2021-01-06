@@ -1,0 +1,22 @@
+{
+  "name": "react-plopjs",
+  "version": "1.0.0",
+  "description": "Generate boilerplate react components",
+  "main": "./lib/index.js",
+  "bin": {
+    "plopjs": "bin/index.js"
+  },
+  "preferGlobal": true,
+  "keywords": [],
+  "author": "Mustafa Alroomi<code.review.0@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "minimist": "^1.2.5",
+    "plop": "^2.7.4"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6",
+    "prettier": "^2.2.1"
+  }
+}
