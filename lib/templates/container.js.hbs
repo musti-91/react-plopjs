@@ -1,0 +1,51 @@
+import React from 'react'
+{{#if redux}}import {connect } from 'redux' {{/if}}
+
+class {{name}} extends React.PureComponent {
+  {{#if state}}
+  constructor(props) {
+    super(props)
+
+    this.timer = undefined
+    this.state = {
+      loading: true,
+    }
+  }
+
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      this.stopLoading()
+    }, 3000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
+  stopLoading() {
+    this.setState((prevState) => ({ loading: !prevState.loading }))
+  }
+
+{{/if}}
+
+  render() {
+    {{#if state}}const { loading } = this.state{{/if}}
+    const { content } = this.props
+
+  return (
+    {{#if state}}<div>{loading ? 'Loading ....' : content}</div>
+    {{else}}
+      <div>{content}</div>
+    {{/if}}
+    )
+  }
+}
+{{#if redux}}
+  const mapState = (state) => ({})
+  const mapDispatch = (dispatch) => ({})
+
+  export default connect(mapState, mapDispatch)({{name}})
+
+{{else}}
+  export default {{name}}
+{{/if}}

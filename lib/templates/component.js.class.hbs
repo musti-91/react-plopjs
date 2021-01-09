@@ -1,7 +1,7 @@
 {{#if css}}
-  import styles from "./{{name}}.module.css";
+  import styles from "./{{lower name}}.module.css";
 {{else}}
-  import styles from "./{{name}}.module.scss";
+  import styles from "./{{lower name}}.module.scss";
 {{/if}}
 
 import React, { Component } from "react";
