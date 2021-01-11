@@ -23,3 +23,8 @@ Todo:
 
 [ ] Add support for react-native
 
+
+
+#### Licence
+
+MIT
