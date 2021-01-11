@@ -7,7 +7,7 @@
 
 ## Install
 ````bash
-yarn install -g react-plopjs
+yarn global add react-plopjs
 ````
 or using npm
 `````bash
