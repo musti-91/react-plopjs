@@ -15,7 +15,7 @@
     "tsc": "tsc"
   },
   "preferGlobal": true,
-  "keywords": [],
+  "keywords": ["react", "plopjs", "dynamic react components"],
   "author": "Mustafa Alroomi<code.review.0@gmail.com>",
   "license": "ISC",
   "dependencies": {
