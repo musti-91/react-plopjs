@@ -1,0 +1,29 @@
+{{#if css}}
+  import styles from "./{{lower name}}.module.css";
+{{else}}
+  import styles from "./{{lower name}}.module.scss";
+{{/if}}
+
+import React, { Component } from "react";
+
+/**
+* {{ name }}
+*/
+class {{ name }} extends Component {
+  /**
+  * Render
+  */
+  render() {
+  const { content } = this.props;
+
+    return (
+        {{#if css}}
+          <p className={styles.element}>{content}</p>
+        {{else}}
+          <p className={styles.element}>{content}</p>
+        {{/if}}
+    );
+  }
+}
+
+export default {{name}};

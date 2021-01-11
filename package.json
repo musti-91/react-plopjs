@@ -2,12 +2,20 @@
   "name": "react-plopjs",
   "version": "1.0.0",
   "description": "Generate boilerplate react components",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "bin": {
     "plopjs": "bin/index.js"
   },
+  "scripts": {
+    "watch": "babel src/ --out-dir lib --extensions .ts --watch",
+    "build": "babel src/ --out-dir lib --extensions .ts",
+    "prepublish": "tsc && yarn run build",
+    "test:w": "jest --coverage --watch",
+    "test": "jest",
+    "tsc": "tsc"
+  },
   "preferGlobal": true,
-  "keywords": [],
+  "keywords": ["react", "plopjs", "dynamic react components"],
   "author": "Mustafa Alroomi<code.review.0@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -16,7 +24,17 @@
     "plop": "^2.7.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/inquirer": "^7.3.1",
+    "@types/jest": "^26.0.20",
     "glob": "^7.1.6",
-    "prettier": "^2.2.1"
+    "jest": "^26.6.3",
+    "path": "^0.12.7",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
   }
 }

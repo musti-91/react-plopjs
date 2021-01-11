@@ -1,0 +1,61 @@
+import * as React from 'react'
+{{#if redux}}import {connect, Dispatch } from 'redux' {{/if}}
+
+export interface IProps {
+  content: string
+}
+{{#if state}}
+
+interface IState {
+  loading: boolean
+}
+{{/if}}
+
+class {{name}} extends React.PureComponent<{{#if state}}IState, {{/if}}IProps> {
+  private timer: any
+  {{#if state}}
+
+  state = {
+    loading: true,
+  }
+
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      this.stopLoading()
+    }, 3000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
+  private stopLoading() {
+    this.setState((prevState) => ({ loading: !prevState.loading }))
+  }
+
+  {{/if}}
+
+  render() {
+    {{#if state}}const { loading } = this.state{{/if}}
+    const { content } = this.props
+
+    return (
+      {{#if state}}<div>{loading ? 'Loading ....' : content}</div>
+      {{else}}
+        <div>{content}</div>
+      {{/if}}
+    )
+  }
+}
+{{#if redux}}
+  interface IStore {
+    // should be moved
+  }
+  const mapState = (state: IStore) => ({})
+  const mapDispatch = (dispatch: Dispatch) => ({})
+
+  export default connect(mapState, mapDispatch)({{name}})
+
+{{else}}
+export default {{name}}
+{{/if}}

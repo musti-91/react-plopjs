@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-// require('plop/bin/plop')
 const path = require('path')
 const args = process.argv.slice(2)
 const argv = require('minimist')(args)
