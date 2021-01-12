@@ -28,4 +28,3 @@ Todo:
 #### Licence
 
 MIT
-pa
