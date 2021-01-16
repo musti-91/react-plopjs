@@ -1,0 +1,35 @@
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from 'react-native'
+
+{{#if test}}export{{/if}} interface IProps {
+  content: string;
+}
+
+/**
+* {{ camelcase name }}
+*/
+class {{ camelcase name }} extends Component<IProps> {
+/**
+* Render
+*/
+render() {
+const { content } = this.props;
+return (
+  <View style={styles.container}>
+    <Text style={styles.content}>
+      {content}
+    </Text>
+  </View>
+);
+}
+}
+
+  const styles = StyleSheet.create({
+  container: {
+  flex: 1,
+  },
+  content: {
+  color: '#000'
+  }
+  })
+  export default {{camelcase name}};

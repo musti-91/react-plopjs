@@ -1,0 +1,76 @@
+import * as React from 'react'
+import { View, Text, StyleSheet }  from 'react-native'
+{{#if redux}}
+  import { Dispatch } from 'redux'
+  import { connect } from 'react-redux'
+{{/if}}
+
+export interface IProps {
+  content: string
+}
+{{#if state}}
+
+interface IState {
+  loading: boolean
+}
+{{/if}}
+
+class {{camelcase name}} extends React.PureComponent<{{#if state}}IState, {{/if}}IProps> {
+  private timer: any
+  {{#if state}}
+
+  state = {
+    loading: true,
+  }
+
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      this.stopLoading()
+    }, 3000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
+  private stopLoading() {
+    this.setState((prevState) => ({ loading: !prevState.loading }))
+  }
+
+  {{/if}}
+
+  render() {
+    {{#if state}}const { loading } = this.state{{/if}}
+    const { content } = this.props
+
+    return (
+    <View style={styles.container}>
+      {{#if state}}
+        <Text style={styles.content}>{loading ? 'Loading...': props.content}</Text>
+      {{else}}
+        <Text style={styles.content}>{props.content}</Text>
+      {{/if}}
+    </View>
+  }
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+},
+content: {
+color: '#000'
+}
+})
+{{#if redux}}
+  interface IStore {
+    // should be moved
+  }
+  const mapState = (state: IStore) => ({})
+  const mapDispatch = (dispatch: Dispatch) => ({})
+
+  export default connect(mapState, mapDispatch)({{camelcase name}})
+
+{{else}}
+export default {{camelcase name}}
+{{/if}}

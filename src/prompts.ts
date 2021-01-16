@@ -12,6 +12,7 @@ import {
   Inquirer,
   Answers,
 } from 'inquirer'
+import { isReactNative } from './helper'
 
 type DynamicPromptsFunction = (inquirer: Inquirer) => Promise<Answers>
 
@@ -63,7 +64,6 @@ export const prompts: Prompts = [
     type: 'confirm',
     message: 'Function Component? [Y]',
     default: true,
-    when: ({ type }) => type === COMPONENT,
   },
   {
     name: 'options',
@@ -73,11 +73,12 @@ export const prompts: Prompts = [
       {
         name: 'SCSS module',
         value: 'scss',
-        checked: true,
+        disabled: isReactNative,
       },
       {
         name: 'CSS module',
         value: 'css',
+        disabled: isReactNative,
       },
       {
         name: 'A test file[Enzyme]',
