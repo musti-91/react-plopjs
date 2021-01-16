@@ -1,11 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import {{ name }} from "./index";
+import {{ camelcase name }} from "./index";
 
 // Todo: expected this file will grow.
 
-describe('{{name}}', () => {
+describe('{{camelcase name}}', () => {
   let component;
   let props;
 
@@ -16,7 +16,7 @@ describe('{{name}}', () => {
 
 
   function givenComponent() {
-    component = shallow(<{{name}} {...props} />);
+    component = shallow(<{{camelcase name}} {...props} />);
   }
 
   function thenItMatchSnapshot() {
