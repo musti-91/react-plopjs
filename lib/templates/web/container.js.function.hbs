@@ -1,0 +1,43 @@
+import React from 'react'
+
+{{#if redux}}
+  import { connect } from 'react-redux'
+{{/if}}
+
+
+
+const {{camelcase name}} = (props) => {
+{{#if state}}
+  const [loading, setLoading] = React.useState(true)
+
+
+  React.useEffect(() => {
+  let timer;
+
+  timer = setTimeout(() => {
+  setLoading(false);
+  }, 3000)
+
+  return () => clearTimeout(timer)
+  })
+
+{{/if}}
+
+return (
+<div>
+  {{#if state}}
+    <span>{loading ? 'Loading...': props.content}</span>
+  {{else}}
+    <span>{props.content}</span>
+  {{/if}}
+</div>
+);
+}
+{{#if redux}}
+  const mapStateToProps = (state) => ({})
+  const mapDispatchToProps = (dispatch) => ({})
+
+  export default connect(mapStateToProps, mapDispatchToProps)({{camelcase name}})
+{{else}}
+  export default {{camelcase name}}
+{{/if}}

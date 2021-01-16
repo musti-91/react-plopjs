@@ -1,0 +1,53 @@
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+
+{{#if redux}}
+  import { connect } from 'react-redux'
+{{/if}}
+
+
+
+const {{camelcase name}} = (props) => {
+  {{#if state}}
+    const [loading, setLoading] = React.useState(true)
+
+
+    React.useEffect(() => {
+    let timer;
+
+    timer = setTimeout(() => {
+    setLoading(false);
+    }, 3000)
+
+    return () => clearTimeout(timer)
+    })
+
+  {{/if}}
+
+  return (
+  <View style={styles.container}>
+    {{#if state}}
+      <Text style={styles.content}>{loading ? 'Loading...': props.content}</Text>
+    {{else}}
+      <Text style={styles.content}>{props.content}</Text>
+    {{/if}}
+  </View>
+  );
+  }
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+},
+content: {
+color: '#000'
+}
+})
+  {{#if redux}}
+    const mapStateToProps = (state) => ({})
+    const mapDispatchToProps = (dispatch) => ({})
+
+    export default connect(mapStateToProps, mapDispatchToProps)({{camelcase name}})
+  {{else}}
+    export default {{camelcase name}}
+  {{/if}}

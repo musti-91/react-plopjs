@@ -1,0 +1,66 @@
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+{{#if redux}}
+  import { connect } from 'react-redux'
+{{/if}}
+
+class {{camelcase name}} extends React.PureComponent {
+  {{#if state}}
+  constructor(props) {
+    super(props)
+
+    this.timer = undefined
+    this.state = {
+      loading: true,
+    }
+  }
+
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      this.stopLoading()
+    }, 3000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
+  stopLoading() {
+    this.setState((prevState) => ({ loading: !prevState.loading }))
+  }
+
+{{/if}}
+
+  render() {
+    {{#if state}}const { loading } = this.state{{/if}}
+    const { content } = this.props
+
+  return (
+      <View style={styles.container}>
+        {{#if state}}
+            <Text style={styles.content}>{loading ? 'Loading ....' : content}</Text>
+        {{else}}
+            <Text style={styles.content}>{content}</Text>
+        {{/if}}
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+},
+content: {
+color: '#000'
+}
+})
+{{#if redux}}
+  const mapState = (state) => ({})
+  const mapDispatch = (dispatch) => ({})
+
+  export default connect(mapState, mapDispatch)({{camelcase name}})
+
+{{else}}
+  export default {{camelcase name}}
+{{/if}}

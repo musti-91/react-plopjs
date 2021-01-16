@@ -1,6 +1,6 @@
 {
   "name": "react-plopjs",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Generate boilerplate react components",
   "main": "lib/index.js",
   "bin": {
@@ -18,19 +18,25 @@
     "url": "https://github.com/musti-91/react-plopjs"
   },
   "preferGlobal": true,
-  "keywords": ["react", "plopjs", "dynamic react components"],
+  "keywords": [
+    "react",
+    "plopjs",
+    "dynamic react components"
+  ],
   "author": "Mustafa Alroomi<code.review.0@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.0",
-    "minimist": "^1.2.5",
-    "plop": "^2.7.4",
-    "glob": "^7.1.6",
-    "prettier": "^2.2.1",
     "@babel/polyfill": "^7.12.1",
-    "path": "^0.12.7"
+    "camelcase": "^6.2.0",
+    "chalk": "^4.1.0",
+    "glob": "^7.1.6",
+    "minimist": "^1.2.5",
+    "path": "^0.12.7",
+    "plop": "^2.7.4",
+    "prettier": "^2.2.1"
   },
   "devDependencies": {
+    "@types/camelcase": "^5.2.0",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",

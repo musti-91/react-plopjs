@@ -1,6 +1,6 @@
 # react-plopjs
 
-> Wrapper around [Plopjs](https://plopjs.com/) for react
+> Wrapper around [Plopjs](https://plopjs.com/) for react, react-native
 
 ![Kitten](react-plopjs-gif.gif 'react-plopjs')
 
@@ -18,10 +18,9 @@ the commands to create your components and containers
 
 > No other additional config is required
 
-
-Todo: 
-
-[ ] Add support for react-native
+#### Prettier
+`react-plopjs` will check if you have `.prettierrc` config in your project, otherwise it will
+take the default prettier config.
 
 
 

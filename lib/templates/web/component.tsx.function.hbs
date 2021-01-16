@@ -4,13 +4,15 @@
   import styles from "./{{lower name}}.module.scss";
 {{/if}}
 
-import React from 'react';
-/**
-* {{name}}
-*/
+import React, { FC } from 'react';
 
-const {{ name }} = ({ content }) =>
-(
+{{#if test}} export {{/if}} interface IProps {
+  content: string;
+}
+/**
+* {{camelcase name}}
+*/
+const {{ camelcase name }}: FC<IProps> = ({ content }) => (
   {{#if css}}
     <p className={styles.element}>{content}</p>
   {{else}}
@@ -18,4 +20,4 @@ const {{ name }} = ({ content }) =>
   {{/if}}
 )
 
-export default {{name}};
+export default {{camelcase name}};

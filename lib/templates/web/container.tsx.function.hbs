@@ -1,0 +1,48 @@
+import * as React from 'react'
+
+{{#if redux}}
+  import { Dispatch } from 'redux'
+  import { connect } from 'react-redux'
+{{/if}}
+
+
+export interface IProps {
+content: string;
+}
+
+const {{camelcase name}}: React.FC<IProps> = (props) => {
+  {{#if state}}
+    const [loading, setLoading] = React.useState(true)
+
+
+    React.useEffect(() => {
+    let timer: any;
+
+    timer = setTimeout(() => {
+    setLoading(false);
+    }, 3000)
+
+    return () => clearTimeout(timer)
+    })
+
+  {{/if}}
+
+  return (
+  <div>
+    {{#if state}}
+      <span>{loading ? 'Loading...': props.content}</span>
+    {{else}}
+      <span>{props.content}</span>
+    {{/if}}
+  </div>
+  );
+  }
+  {{#if redux}}
+    interface IStore { }
+    const mapStateToProps = (state: IStore) => ({})
+    const mapDispatchToProps = (dispatch: Dispatch) => ({})
+
+    export default connect(mapStateToProps, mapDispatchToProps)({{camelcase name}})
+  {{else}}
+    export default {{camelcase name}}
+  {{/if}}

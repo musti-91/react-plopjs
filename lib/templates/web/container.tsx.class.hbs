@@ -1,5 +1,8 @@
 import * as React from 'react'
-{{#if redux}}import {connect, Dispatch } from 'redux' {{/if}}
+{{#if redux}}
+  import { Dispatch } from 'redux'
+  import { connect } from 'react-redux'
+{{/if}}
 
 export interface IProps {
   content: string
@@ -11,7 +14,7 @@ interface IState {
 }
 {{/if}}
 
-class {{name}} extends React.PureComponent<{{#if state}}IState, {{/if}}IProps> {
+class {{camelcase name}} extends React.PureComponent<{{#if state}}IState, {{/if}}IProps> {
   private timer: any
   {{#if state}}
 
@@ -54,8 +57,8 @@ class {{name}} extends React.PureComponent<{{#if state}}IState, {{/if}}IProps> {
   const mapState = (state: IStore) => ({})
   const mapDispatch = (dispatch: Dispatch) => ({})
 
-  export default connect(mapState, mapDispatch)({{name}})
+  export default connect(mapState, mapDispatch)({{camelcase name}})
 
 {{else}}
-export default {{name}}
+export default {{camelcase name}}
 {{/if}}
